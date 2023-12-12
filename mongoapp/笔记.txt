@@ -1,0 +1,3 @@
+首先在router中用get方法渲染edit的初始界面，然后再初始界面中规定action的方法为post，
+规定其传递目的地的url，最后将button设为submiit类型就会在点击的时候，
+express的post路由方法会监听到这个url并运行

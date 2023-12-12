@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <title>Edit Appointment</title>
+  <%- include('./partials/css.ejs') %>
+</head>
+<body>
+  <div class="container">
+    <%- include("./partials/navBar.ejs") %>
+
+    <!-- 假设使用 appointmentID 作为标识 -->
+    <h1>Edit Appointment <%= appointment.appointmentID %></h1>
+    <%- include("./partials/errMsg.ejs") %>
+
+    <!-- 注意 action URL 的更新 -->
+    <form action="/appointments/<%= appointment.ID %>/edit" method="POST">
+      <div class="mb-3">
+        <label class="form-label">Car ID</label>
+        <input
+          type="number"
+          value="<%= appointment.carId %>"
+          name="CarID"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Year</label>
+        <input
+          type="number"
+          value="<%= appointment.year %>"
+          name="Year"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input
+          type="text"
+          value="<%= appointment.model %>"
+          name="Model"
+          class="form-control"
+        />
+      </div>
+      <!-- 添加或删除更多字段以匹配 Redis 中的数据结构 -->
+
+      <div>
+        <button type="submit" class="btn btn-primary">Update Appointment</button>
+      </div>
+    </form>
+
+    <!-- Your footer here -->
+  </div>
+</body>
+</html>

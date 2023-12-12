@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/zexi/learnnode/nodeExpressSqliteEJS_Bikeshare/db/vechile_databse.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="150"/><column_width id="3" width="2220"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,12:mainAppointments"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE Cars (
+    CarID INTEGER PRIMARY KEY,
+    OwnerID INTEGER,
+    Model VARCHAR(255) NOT NULL,
+    Year INTEGER,
+    LastMaintenanceDate DATE,
+    FOREIGN KEY (OwnerID) REFERENCES CarOwners(OwnerID)
+);
+
+CREATE TABLE Shops (
+    ShopID INTEGER PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Appointments (
+    AppointmentID INTEGER PRIMARY KEY,
+    CarID INTEGER,
+    ShopID INTEGER,
+    AppointmentDate DATE NOT NULL,
+    ServiceRequired VARCHAR(255),
+    FOREIGN KEY (CarID) REFERENCES Cars(CarID),
+    FOREIGN KEY (ShopID) REFERENCES Shops(ShopID)
+);
+
+CREATE TABLE CarOwners (
+    OwnerID INTEGER PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    ContactInfo VARCHAR(255)
+);
+
+CREATE TABLE MaintenancePackages (
+    PackageID INTEGER PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Details TEXT
+);
+
+CREATE TABLE Car_Maintenance (
+    PackageID INTEGER,
+    CarID INTEGER,
+    FOREIGN KEY (PackageID) REFERENCES MaintenancePackages(PackageID),
+    FOREIGN KEY (CarID) REFERENCES Cars(CarID),
+    PRIMARY KEY (PackageID, CarID)
+);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

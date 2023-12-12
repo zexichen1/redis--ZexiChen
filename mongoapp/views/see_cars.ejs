@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Vehicle Service Appointments</title>
+    <%- include('./partials/css.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      
+      
+      <%- include("./partials/errMsg.ejs") %>
+      
+      <!-- ... rest of your HTML/EJS code ... -->
+    </div>
+    <div class="container">
+      <%- include("./partials/navBar.ejs") %>
+      <h1>Vehicle Service Appointments</h1>
+
+      <%- include("./partials/errMsg.ejs") %>
+
+
+
+
+      <div class="row">
+        <% cars.forEach(function(car){ %>
+        <div class="col-4 mb-2">
+          <div class="card p-2">
+            <div class="card-title">
+              <label>OwnerID: <output><%= car.OwnerID%></output> </label>
+            </div>
+            <div class="card-text">
+              <div>
+                <label
+                  >CarID: <output><%= car.CarID %></output>
+                </label>
+              </div>
+              <div>
+                <label
+                  >Year: <output><%= car.Year %></output>
+                </label>
+              </div>
+              <div>
+                <a
+                  type="button"
+                  class="btn btn-outline-primary btn-sm"
+                  href="/cars/<%= car.CarID %>/edit"
+                  >Edit</a
+                >
+                <a
+                  type="button"
+                  class="btn btn-outline-danger btn-sm"
+                  href="/cars/<%= car.CarID %>/delete"
+                  >Delete</a
+                >
+              </div>
+
+            </div>
+            <!-- /.card-text -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col-4 -->
+        <% }); %>
+      </div>
+      <!-- /.row -->
+
+      <%- include("./partials/footer.ejs") %>
+    </div>
+    <!-- /.container -->
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>Edit car</title>
+  <%- include('./partials/css.ejs') %>
+</head>
+<body>
+  <div class="container">
+    <%- include("./partials/navBar.ejs") %>
+
+    <h1>Edit car <%= car.carID %></h1>
+    <%- include("./partials/errMsg.ejs") %>
+
+    <form action="/cars/<%= car.CarID %>/edit" method="POST">
+      <!-- Start creating form fields matching the database columns for Appointments table -->
+      <div class="mb-3">
+        <label class="form-label">OwnerID</label>
+        <input
+          type="number"
+          value="<%= car.OwnerID %>"
+          name="OwnerID"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Year</label>
+        <input
+          type="number"
+          value="<%= car.Year %>"
+          name="Year"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input
+          type="string"
+          value="<%= car.Model %>"
+          name="Model"
+          class="form-control"
+        />
+      </div>
+      <!-- End creating form fields matching the database columns for Appointments table -->
+
+      <div>
+        <button type="submit" class="btn btn-primary">Update Cars</button>
+      </div>
+    </form>
+
+    <!-- Your footer here -->
+  </div>
+</body>
+</html>
